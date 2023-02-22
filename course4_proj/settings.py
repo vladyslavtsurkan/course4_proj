@@ -16,7 +16,7 @@ from configurations import Configuration, values
 
 
 class Dev(Configuration):
-    OMDB_KEY = values.SecretValue()
+    OMDB_KEY = ""  # values.SecretValue()
 
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,6 +52,7 @@ class Dev(Configuration):
         'django.contrib.staticfiles',
 
         'movies',
+        'gh',
     ]
 
     MIDDLEWARE = [
