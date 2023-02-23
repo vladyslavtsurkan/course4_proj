@@ -16,7 +16,7 @@ from configurations import Configuration, values
 
 
 class Dev(Configuration):
-    OMDB_KEY = ""  # values.SecretValue()
+    OMDB_KEY = "ce3deff"  # values.SecretValue()
 
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,6 +50,8 @@ class Dev(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+
+        'django_celery_results',
 
         'movies',
         'gh',
@@ -161,3 +163,10 @@ class Dev(Configuration):
     # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+    ADMINS = [("Vlad", "vlad@example.com")]
+
+    CELERY_RESULT_BACKEND = "django-db"
+    CELERY_BROKER_URL = "redis://localhost:6379/0"
